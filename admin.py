@@ -49,7 +49,7 @@ if password_input == current_pw:
         st.subheader("✏️ 성도 및 차량 정보 수정")
         
         # 수정할 성도 선택용 리스트 만들기
-       member_options = {f"{row['name']} ({row['department']}) - {row['plate_number'] if row['plate_number'] else '차량없음'}": row for row in all_data}
+        member_options = {f"{row['name']} ({row['department']}) - {row['plate_number'] if row['plate_number'] else '차량없음'}": row for row in all_data}
         selected_member_str = st.selectbox("수정할 성도를 선택하세요", list(member_options.keys()))
         
         if selected_member_str:
