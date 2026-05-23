@@ -10,20 +10,11 @@ def init_connection():
         password=st.secrets["mysql"]["password"]
     )
 
-# --- DB에서 관리자 비밀번호 가져오기 함수 ---
-def get_admin_password():
-    conn = init_connection()
-    cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT setting_value FROM settings WHERE setting_key = 'admin_password'")
-    result = cursor.fetchone()
-    cursor.close()
-    conn.close()
-    return result['setting_value']
 
 st.title("교회 주차 관리 - 관리자 전용 페이지 🛠️")
 
 # --- 로그인 인증 ---
-current_pw = get_admin_password()
+current_pw = "0000"
 password_input = st.text_input("주차팀 비밀번호를 입력하세요", type="password")
 
 if password_input == current_pw:
